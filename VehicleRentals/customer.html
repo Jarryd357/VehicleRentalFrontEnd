@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Customer</title>
+    <link rel="stylesheet" href="./css/bootstrap.css" >
+    <link rel="stylesheet" href="./css/main.css" >
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+    <script>
+
+        function createCustomer() {
+            $(document).ready(function() {
+                $.ajax({
+                    url: "http://localhost:8080/cust/add?" +
+                    "customerFirstName="+document.getElementById("customerFirstName").value+"" +
+                    "&customerLastName="+document.getElementById("customerLastName").value+"" +
+                    "&customerLicenceNum="+document.getElementById("customerLicenceNum").value+"" +
+                    "&customerAddressStreet="+document.getElementById("customerAddressStreet").value+"" +
+                    "&customerAddressArea="+document.getElementById("customerAddressArea").value+"" +
+                    "&customerAddressCity="+document.getElementById("customerAddressCity").value+"" +
+                    "&customerAddressCode="+document.getElementById("customerAddressCode").value+"" +
+                    "&customerContactNumber="+document.getElementById("customerContactNumber").value+"" +
+                    "&customerEmail="+document.getElementById("customerEmail").value+"" +
+                    ""
+                }).then(function(data) {
+
+                    if(data.toString() !== ""){
+                        document.getElementById("userExistorSaved").innerHTML = "New Customer created";
+                    }
+                    else {
+                        document.getElementById("userExistorSaved").innerHTML ="Customer already exists";
+                    }
+                });
+            });
+        }
+
+        $(document).ready(function() {
+            var name = localStorage.getItem("username");
+            if(name !== null){
+                document.getElementById('logInName').innerHTML = "Logged in as " + name;
+                document.getElementById('logIn').innerHTML = "Sign Out";
+            }
+            else{
+                document.getElementById('logInName').innerHTML = "You are not logged in";
+                document.getElementById('logIn').innerHTML = "Login";
+            }
+        });
+
+        function logOutOrIn(){
+            document.getElementById('logInName').innerHTML = "You are not logged in";
+            document.getElementById('logIn').innerHTML = "Login";
+            localStorage.clear();
+            window.location.href = 'login.html';
+        }
+    </script>
+
+</head>
+<body>
+<header>
+<div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <h1 class="navbar-brand" href="#">Vehicle Rentals</h1>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Vehicles</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Category
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="customer.html">Customers</a>
+                </li>
+            </ul>
+        </div>
+        <div id="logInName" class="logInName">You are not logged in</div> <br/>
+        <button onclick="logOutOrIn(); return false;" class="logOutButton" id="logIn">Login</button>
+    </nav>
+</div>
+</header>
+
+<section id="customer">
+    <div class="container">
+        <h1>
+           Customers
+        </h1>
+    </div>
+</section>
+
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">#ID</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Licence Number</th>
+        <th scope="col">Address</th>
+        <th scope="col">Area</th>
+        <th scope="col">City</th>
+        <th scope="col">Area Code</th>
+        <th scope="col">Cell Number</th>
+        <th scope="col">Email</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr><!--
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+    </tr>
+    <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+    </tr>
+    <tr>
+        <th scope="row">3</th>
+        <td>Larry</td>
+        <td>the Bird</td>
+        <td>@twitter</td>  -->
+    </tr>
+    </tbody>
+</table>
+
+<section id="addCustomer">
+    <div class="container" >
+        <form>
+            <div class="inputData">
+                <br>
+                    <label>First Name:</label> <input type="textbox" id="customerFirstName" placeholder="First Name" />
+                <br />
+                    <label>Last Name:</label> <input type="textbox" id="customerLastName" placeholder="Last Name" />
+                <br />
+                <label>Licence Number:</label> <input type="textbox" id="customerLicenceNum"  placeholder="Licence Number"/>
+                <br />
+                    <label>Address:</label> <input type="textbox" id="customerAddressStreet"  placeholder="Address"/>
+                <br />
+                    <label>Area:</label> <input type="textbox" id="customerAddressArea"  placeholder="Area"/>
+                <br />
+                    <label>City:</label> <input type="textbox" id="customerAddressCity"  placeholder="City"/>
+                <br />
+                    <label>Area Code:</label> <input type="textbox" id="customerAddressCode"  placeholder="Area Code"/>
+                <br />
+                    <label>Cell Number:</label> <input type="textbox" id="customerContactNumber"  placeholder="Cell Number"/>
+                <br />
+                    <label>Email:</label> <input type="email" id="customerEmail" placeholder="Email" />
+                <br />
+                <br />
+                <button class="button_1" onclick="createCustomer(); return false;">Add Customer</button>
+                <div id="userExistorSaved"></div>
+            </div>
+            <div style="clear: right"/>
+        </form>
+    </div>
+
+</section>
+
+
+
+<footer>
+<p>Vehicle Rentals, copyright &copy; 2017</p>
+</footer>
+
+</body>
+</html>
