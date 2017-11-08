@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Vehicle Rentals</title>
+    <link rel="stylesheet" href="./css/bootstrap.css" >
+    <link rel="stylesheet" href="./css/Vehicle.css" >
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var name = localStorage.getItem("username");
+
+
+            if(name !== null){
+
+                document.getElementById('logInName').innerHTML = "Logged in as " + name;
+                document.getElementById('logIn').innerHTML = "Sign Out";
+            }
+            else{
+                document.getElementById('logInName').innerHTML = "You are not logged in";
+                document.getElementById('logIn').innerHTML = "Sign in";
+            }
+
+
+
+        });
+        function logOutOrIn(){
+            document.getElementById('logInName').innerHTML = "You are not logged in";
+            document.getElementById('logIn').innerHTML = "Sign in";
+            localStorage.clear();
+            window.location.href = 'login.html';
+        }
+		
+
+    </script>
+</head>
+<body>
+<header>
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <h1 class="navbar-brand" href="#">Vehicle Rentals</h1>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Vehicles</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Category
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div id="logInName" class="logInName">You are not logged in</div> <br/>
+            <button onclick="logOutOrIn(); return false;" class="logOutButton" id="logIn">Login</button>
+        </nav>
+    </div>
+</header>
+
+<section id="showcase">
+    <div class="container">
+        <h1>
+            Rentals made easy
+        </h1>
+    </div>
+</section>
+
+<section id="VehicleTable">
+    <div class="container">
+        <table style="width:70%">
+			<tr>
+				<th>Vehicle ID</th>
+				<th>Registration</th>
+				<th>Make</th>
+				<th>Model</th> 
+				<th>Availability</th>
+			</tr>
+			<tr>
+				<td>Jill</td>
+				<td>Smith</td> 
+				<td>50</td>
+				<td>50</td>
+				<td>50</td>
+			</tr>
+			<tr>
+				<td>Eve</td>
+				<td>Jackson</td> 
+				<td>94</td>
+				<td>50</td>
+				<td>50</td>
+			</tr>
+			<tr>
+				<td>Eve</td>
+				<td>Jackson</td> 
+				<td>94</td>
+				<td>50</td>
+				<td>50</td>
+			</tr>
+			<tr>
+				<td>Eve</td>
+				<td>Jackson</td> 
+				<td>94</td>
+				<td>50</td>
+				<td>50</td>
+			</tr>
+		</table>
+    </div>
+    <div style="clear: left"/>
+</section>
+<input type="button" id="tst" value="OK" onclick="fnselect()" />
+<!-- <section id="boxes">
+    <div class="container">
+        <div class="box">
+            <img class="generalImage" src="./images/sedans.jpg" >
+            <h3>Sedans</h3>
+        </div>
+        <div class="box">
+            <img class="generalImage" src="./images/SUV.jpg" >
+            <h3>SUV's</h3>
+        </div>
+        <div class="box">
+            <img class="generalImage" src="./images/limo.jpg" >
+            <h3>Limo's</h3>
+        </div>
+        <div class="box">
+            <img class="generalImage" src="./images/trailer.png" >
+            <h3>Trailers</h3>
+        </div>
+        <div class="box">
+            <img class="generalImage" src="./images/buses.png" >
+            <h3>Buses</h3>
+        </div>
+    </div>
+    <div style="clear: left"/>
+</section> -->
+
+
+<footer>
+    <p>Vehicle Rentals, copyright &copy; 2017</p>
+</footer>
+
+</body>
+</html>
