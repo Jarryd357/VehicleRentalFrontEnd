@@ -2,32 +2,36 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width">
-    <title>Vehicle Rentals</title>
+    <title>Login</title>
     <link rel="stylesheet" href="./css/bootstrap.css" >
     <link rel="stylesheet" href="./css/main.css" >
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
     <script>
-        $(document).ready(function() {
-            var name = localStorage.getItem("username");
+        function login(){
+            $(document).ready(function() {
+                $.ajax({
+                    url: "http://localhost:8080/login?" +
+                    "userName="+document.getElementById("username").value+"" +
+                    "&password="+document.getElementById("password").value+"" +
+                    ""
+                }).then(function(data) {
+                    dataType: 'json';
+                    //alert("data = "+ data[0].username);
 
-            if(name !== null){
-
-                document.getElementById('logInName').innerHTML = "Logged in as " + name;
-                document.getElementById('logIn').innerHTML = "Sign Out";
-            }
-            else{
-                document.getElementById('logInName').innerHTML = "You are not logged in";
-                document.getElementById('logIn').innerHTML = "Login";
-            }
-            
-        });
-        function logOutOrIn(){
-            document.getElementById('logInName').innerHTML = "You are not logged in";
-            document.getElementById('logIn').innerHTML = "Login";
-            localStorage.clear();
-            window.location.href = 'login.html';
+                    if(data.toString() !== ""){
+                        //alert("Login Successful");
+                        localStorage.clear();
+                        localStorage.setItem('username', data[0].username);
+                        localStorage.setItem('userID', data[0].id);
+                        window.location.href = 'index.html';
+                    }
+                    else{
+                        localStorage.clear();
+                        alert("Login failed");
+                    }
+                });
+            });
         }
     </script>
 
@@ -48,7 +52,7 @@
                         <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="vehicles.html">Vehicles</a>
+                        <a class="nav-link" href="#">Vehicles</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -72,39 +76,31 @@
     </div>
 </header>
 
-<section id="showcase">
+<section id="logincss">
     <div class="container">
         <h1>
-            Rentals made easy
+            Login
         </h1>
     </div>
 </section>
 
-<section id="boxes">
-    <div class="container">
-        <div class="box">
-            <img class="generalImage" src="./images/sedans.jpg" >
-            <h3>Sedans</h3>
-        </div>
-        <div class="box">
-            <img class="generalImage" src="./images/SUV.jpg" >
-            <h3>SUV's</h3>
-        </div>
-        <div class="box">
-            <img class="generalImage" src="./images/limo.jpg" >
-            <h3>Limo's</h3>
-        </div>
-        <div class="box">
-            <img class="generalImage" src="./images/trailer.png" >
-            <h3>Trailers</h3>
-        </div>
-        <div class="box">
-            <img class="generalImage" src="./images/buses.png" >
-            <h3>Buses</h3>
-        </div>
+
+<form class="container">
+    <div class="form-group">
+        <label for="email">Email address:</label>
+        <input type="email" class="form-control" id="email">
     </div>
-    <div style="clear: left"/>
-</section>
+    <div class="form-group">
+        <label for="pwd">Password:</label>
+        <input type="password" class="form-control" id="pwd">
+    </div>
+    <div class="checkbox">
+        <label><input type="checkbox"> Remember me</label>
+    </div>
+    <button type="submit" class="button_1">Login</button>
+</form>
+
+
 
 <footer>
     <p>Vehicle Rentals, copyright &copy; 2017</p>
