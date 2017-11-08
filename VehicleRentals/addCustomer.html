@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Customer</title>
+    <link rel="stylesheet" href="./css/bootstrap.css" >
+    <link rel="stylesheet" href="./css/main.css" >
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="js/addCustomer.js"></script>
+	<script src="js/bootstrap.js"></script>
+	<script src="js/listCustomers.js"></script>
+</head>
+
+<body>
+<header>
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <h1 class="navbar-brand" href="#">Vehicle Rentals</h1>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="customerPage.html">Customer</a>
+                    </li>
+					<li class="nav-item">
+                        <a class="nav-link" href="vehiclePage.html">Vehicles</a>
+                    </li>
+					<li class="nav-item">
+                        <a class="nav-link" href="#">Bookings</a>
+                    </li>
+					<li class="nav-item">
+                        <a class="nav-link" href="#">Billing</a>
+                    </li>
+                </ul>
+            </div>
+            <button onclick="logOut(); return false;" class="logOutButton" id="logIn">LogOut</button>
+        </nav>
+    </div>
+	 <script>
+        function vehicle(){
+            location.href="car.html";
+        }
+        function viewAllVehicles(){
+            location.href="vehiclePage.html";
+        }
+        function addCustomer(){
+            location.href="addCustomer.html";
+        }
+        function viewCustomers(){
+            location.href="customerPage.html";
+        }
+        function homepage()
+        {
+            location.href="home.html";
+        }
+        function registerUser()
+        {
+            location.href="register.html";
+        }
+        function logOut()
+        {
+            var txt;
+            var r = confirm("Click OK to confirm Logout");
+            if (r == true) {
+                sessionStorage.clear();
+                location.href="login.html";
+            }
+        }
+    </script>
+</header>
+	<div id="container" class="container-fluid">
+	<div class="box-content">
+	<h1>Add Customer</h1>
+
+                <form name="customerForm" id="customerForm">
+
+                    <!-- Details for the customer you are inserting -->
+
+                    <div class="form-group row">
+                        <!--suppress XmlInvalidId -->
+                        <label for="firstname" class="col-sm-1 col-form-label">FirstName</label>
+                        <div class="col-sm-5">
+                            <input type="text" id="txtFirstName" class="form-control">
+                            <small id="errorFirstName" class="text-danger"></small>
+                        </div>
+                    </div>
+                
+                    <div class="form-group row">
+                        <!--suppress XmlInvalidId -->
+                        <label for="surname" class="col-sm-1 col-form-label">LastName</label>
+                        <div class="col-sm-5">
+                            <input type="text" id="txtLastName" class="form-control">
+                            <small id="errorLastName" class="text-danger"></small>
+                        </div>
+                    </div>
+                  
+                    <div class="form-group row">
+                        <!--suppress XmlInvalidId -->
+                        <label for="email" class="col-sm-1 col-form-label">Address Street</label>
+                        <div class="col-sm-5">
+                            <input type="text" id="txtAddressStreet" class="form-control">
+                            <small id="errorAddressStreet" class="text-danger"></small>
+                        </div>
+                    </div>
+              
+                    <div class="form-group row">
+                        <!--suppress XmlInvalidId -->
+                        <label for="houseNumber" class="col-sm-1 col-form-label">Address Area</label>
+                        <div class="col-sm-5">
+                            <input type="text" id="txtAddressArea" class="form-control">
+                            <small id="errorAddressArea" class="text-danger"></small>
+                        </div>
+                    </div>
+               
+                    <div class="form-group row">
+                        <!--suppress XmlInvalidId -->
+                        <label for="city" class="col-sm-1 col-form-label">Address City</label>
+                        <div class="col-sm-5">
+                            <input type="text" id="txtAddressCity" class="form-control">
+                            <small id="errorAddressCity" class="text-danger"></small>
+                        </div>
+                    </div>
+                
+                    <div class="form-group row">
+                        <!--suppress XmlInvalidId -->
+                        <label for="province" class="col-sm-1 col-form-label">Address Code</label>
+                        <div class="col-sm-5">
+                            <input type="text" id="txtAddressCode" class="form-control">
+                            <small id="errorAddressCode" class="text-danger"></small>
+                        </div>
+                    </div>
+                 
+                    <div class="form-group row">
+                        <!--suppress XmlInvalidId -->
+                        <label for="postalCode" class="col-sm-1 col-form-label">Contact Number</label>
+                        <div class="col-sm-5">
+                            <input type="text" id="txtContactNo" class="form-control">
+                            <small id="errorContactNo" class="text-danger"></small>
+                        </div>
+                    </div>
+                    
+
+
+                  
+                    <div class="form-group row">
+                        <!--suppress XmlInvalidId -->
+                        <label for="complex" class="col-sm-1 col-form-label">Email</label>
+                        <div class="col-sm-5">
+                            <input type="text" id="txtEmail" class="form-control">
+                            <small id="errorEmail" class="text-danger"></small>
+                        </div>
+                    </div>
+                   
+
+                   
+                    <div class="form-group row">
+                        <!--suppress XmlInvalidId -->
+                        <label for="numberStreet" class="col-sm-1 col-form-label">Password</label>
+                        <div class="col-sm-5">
+                            <input type="text" id="txtPass" class="form-control">
+                            <small id="errorPass" class="text-danger"></small>
+                        </div>
+                    </div>
+                    
+
+
+
+                    <!--Button to submit the form -->
+                    <div class="form-group row">
+                        <input type="submit" name="submitAddCar" class="btn btn-outline-success" value="Add Customer" onclick="validate(); return false;">
+                    </div>
+                    <!-- End of submit button  -->
+			</div>
+		</div>
+	<footer>
+		<p>Vehicle Rentals, copyright &copy; 2017</p>
+	</footer>
+	
+</body>
+</html>
